@@ -651,23 +651,58 @@ const handleCopyLink = () => {
 .main-title {
   font-size: 3rem;
   font-weight: bold;
-  background: linear-gradient(to right, #fbbf24, #fcd34d, #fbbf24);
+  background: linear-gradient(90deg, #fbbf24, #fde047, #fef3c7, #fde047, #fbbf24, #f59e0b, #d97706, #f59e0b, #fbbf24);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   line-height: 1.2;
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
+  animation: gradientFlow 6s ease infinite;
+  text-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .year {
   font-size: 3.75rem;
   font-weight: bold;
-  background: linear-gradient(to right, #fbbf24, #f59e0b);
+  background: linear-gradient(135deg, #fbbf24, #f59e0b, #ec4899, #8b5cf6, #06b6d4, #10b981, #fbbf24);
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   font-style: italic;
+  animation: rainbowShift 8s ease infinite;
+  text-shadow: 0 0 40px rgba(251, 191, 36, 0.4);
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
+}
+
+@keyframes rainbowShift {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: brightness(1) drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
+  }
+  25% {
+    background-position: 50% 50%;
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(236, 72, 153, 0.4));
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.1) drop-shadow(0 0 15px rgba(139, 92, 246, 0.4));
+  }
+  75% {
+    background-position: 50% 50%;
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(6, 182, 212, 0.4));
+  }
 }
 
 .divider {
@@ -685,15 +720,46 @@ const handleCopyLink = () => {
 .dgp-text {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fbbf24;
+  background: linear-gradient(90deg, #fbbf24, #fde047, #fbbf24, #f59e0b, #fbbf24);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   letter-spacing: 0.3em;
+  animation: textGlow 4s ease infinite;
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4));
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4)) brightness(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.6)) brightness(1.3);
+  }
 }
 
 .tagline {
   font-size: 0.75rem;
-  color: #9ca3af;
+  background: linear-gradient(90deg, #9ca3af, #d1d5db, #fbbf24, #d1d5db, #9ca3af);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  animation: subtleShine 5s ease infinite;
+}
+
+@keyframes subtleShine {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Zalo Section */
@@ -704,11 +770,38 @@ const handleCopyLink = () => {
 .zalo-button {
   width: 100%;
   background: linear-gradient(to right, #1f2937, #111827);
-  border: 1px solid #374151;
+  border: 2px solid transparent;
+  background-clip: padding-box;
   border-radius: 1rem;
   padding: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.zalo-button::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #8b5cf6, #ec4899, #3b82f6);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 3s linear infinite;
+  z-index: -1;
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
 }
 
 .zalo-button:hover {
@@ -762,11 +855,46 @@ const handleCopyLink = () => {
 .menu-item {
   width: 100%;
   background: linear-gradient(to right, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.8));
-  border: 1px solid rgba(55, 65, 81, 0.5);
+  border: 2px solid transparent;
+  background-clip: padding-box;
   border-radius: 1rem;
   padding: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b, #ec4899, #8b5cf6, #06b6d4, #fbbf24);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 4s linear infinite;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.menu-item:nth-child(1)::before {
+  animation-delay: 0s;
+}
+
+.menu-item:nth-child(2)::before {
+  animation-delay: -1s;
+}
+
+.menu-item:nth-child(3)::before {
+  animation-delay: -2s;
+}
+
+.menu-item:nth-child(4)::before {
+  animation-delay: -3s;
 }
 
 .menu-item:hover {
@@ -841,10 +969,28 @@ const handleCopyLink = () => {
 /* Premium Section */
 .premium-section {
   background: linear-gradient(to bottom right, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.6));
-  border: 1px solid rgba(234, 179, 8, 0.3);
+  border: 2px solid transparent;
+  background-clip: padding-box;
   border-radius: 1rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.premium-section::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(90deg, #fbbf24, #eab308, #fde047, #fbbf24);
+  background-size: 200% 200%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 2s linear infinite;
+  z-index: -1;
 }
 
 .premium-header {
