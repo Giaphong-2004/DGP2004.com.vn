@@ -1,7 +1,9 @@
 <template>
-  <DGPLanding />
+  <div id="app">
+    <Portfolio />
+  </div>
 </template>
 
 <script setup>
-import DGPLanding from './components/DGPLanding.vue'
+import Portfolio from './components/Portfolio.vue'
 </script>
