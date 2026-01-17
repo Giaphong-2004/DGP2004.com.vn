@@ -7,11 +7,6 @@
       </div>
     </div>
 
-    <!-- Shooting Stars Effect -->
-    <div class="shooting-stars-container">
-      <div v-for="i in 5" :key="i" class="shooting-star" :style="getShootingStarStyle(i)"></div>
-    </div>
-
     <!-- Animated Background -->
     <div class="bg-animated">
       <div class="bg-gradient"></div>
@@ -195,25 +190,16 @@ const timeline = [
 ]
 
 const handleZaloClick = () => {
-  window.open('https://zalo.me/0815108977', '_blank')
+  window.open('https://zalo.me/0369620631', '_blank')
 }
 
 const getSnowflakeStyle = (i) => {
   return {
     left: `${Math.random() * 100}%`,
-    animationDuration: `${5 + Math.random() * 10}s`,
-    animationDelay: `${Math.random() * 5}s`,
+    animationDuration: `${3 + Math.random() * 5}s`,
+    animationDelay: `${Math.random() * 3}s`,
     fontSize: `${10 + Math.random() * 20}px`,
     opacity: 0.3 + Math.random() * 0.7
-  }
-}
-
-const getShootingStarStyle = (i) => {
-  return {
-    top: `${Math.random() * 50}%`,
-    left: `${Math.random() * 100}%`,
-    animationDelay: `${i * 3 + Math.random() * 5}s`,
-    animationDuration: `${0.5 + Math.random() * 1}s`
   }
 }
 </script>
@@ -250,63 +236,6 @@ const getShootingStarStyle = (i) => {
   }
   100% {
     transform: translateY(100vh) rotate(360deg);
-  }
-}
-
-/* Shooting Stars Effect */
-.shooting-stars-container {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 15;
-}
-
-.shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
-  animation: shootingStar linear infinite;
-  opacity: 0;
-}
-
-.shooting-star::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
-  transform: translateX(2px) translateY(0);
-}
-
-.shooting-star::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(to right, rgba(251, 191, 36, 0.6), transparent);
-  transform: translateX(2px) translateY(0);
-  filter: blur(2px);
-}
-
-@keyframes shootingStar {
-  0% {
-    transform: translateX(0) translateY(0) rotate(-45deg);
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(300px) translateY(300px) rotate(-45deg);
-    opacity: 0;
   }
 }
 
