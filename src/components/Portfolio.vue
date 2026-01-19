@@ -33,7 +33,7 @@
           <div class="avatar-wrapper">
             <div class="avatar-border">
               <div class="avatar-inner">
-                <User :size="48" />
+                <img src="/images/avatar.jpg" alt="Avatar" class="avatar-image" />
               </div>
             </div>
             <div class="avatar-badge">
@@ -86,6 +86,7 @@
           v-for="(project, index) in projects" 
           :key="index"
           class="project-card"
+          @click="handleProjectClick(project.link)"
         >
           <div class="project-badge">AUTOMATION</div>
           <h3 class="project-title">{{ project.title }}</h3>
@@ -173,12 +174,14 @@ const projects = [
   {
     title: 'Hệ Thống Bán Acc Tự Động',
     description: 'Tích hợp thanh toán QR Code, quản lý tài khoản, tăng doanh thu lên 300%',
-    tags: ['#NODE.JS', '#REACT', '#MONGODB']
+    tags: ['#NODE.JS', '#REACT', '#MONGODB'],
+    link: 'https://shopaccgiaphong-com-vn.pages.dev/'
   },
   {
     title: 'Nền Tảng Mạng Xã Hội',
     description: 'Xây dựng social media với thời gian thực, chat, notification',
-    tags: ['#VUE.JS', '#SOCKET.IO', '#POSTGRESQL']
+    tags: ['#VUE.JS', '#SOCKET.IO', '#POSTGRESQL'],
+    link: ''
   }
 ]
 
@@ -200,6 +203,12 @@ const getSnowflakeStyle = (i) => {
     animationDelay: `${Math.random() * 3}s`,
     fontSize: `${10 + Math.random() * 20}px`,
     opacity: 0.3 + Math.random() * 0.7
+  }
+}
+
+const handleProjectClick = (link) => {
+  if (link) {
+    window.open(link, '_blank')
   }
 }
 </script>
@@ -400,6 +409,13 @@ const getSnowflakeStyle = (i) => {
   align-items: center;
   justify-content: center;
   color: #fbbf24;
+  overflow: hidden;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .avatar-badge {
@@ -609,6 +625,7 @@ const getSnowflakeStyle = (i) => {
 .project-card:hover {
   transform: scale(1.02);
   border-color: rgba(234, 179, 8, 0.4);
+  box-shadow: 0 15px 40px rgba(251, 191, 36, 0.2);
 }
 
 .project-badge {
