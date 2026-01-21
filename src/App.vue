@@ -1,9 +1,7 @@
 <template>
-  <div id="app">
-    <Portfolio />
-  </div>
+  <router-view />
 </template>
 
 <script setup>
-import Portfolio from './components/Portfolio.vue'
+// Không cần import Portfolio nữa, router sẽ tự động load
 </script>

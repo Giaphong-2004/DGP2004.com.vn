@@ -62,6 +62,7 @@
               v-for="(skill, index) in skills" 
               :key="index"
               class="skill-card"
+              @click="handleSkillClick(index)"
             >
               <div class="skill-content">
                 <div class="skill-icon" :class="`icon-${index}`">
@@ -146,6 +147,9 @@
 
 <script setup>
 import { Code, Database, Shield, User, CheckCircle, Clock, Award, MessageCircle } from 'lucide-vue-next'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const skills = [
   {
@@ -165,8 +169,8 @@ const skills = [
   },
   {
     icon: Shield,
-    title: 'Security & Crypto',
-    subtitle: 'OAUTH • JWT • ENCRYPTION'
+    title: 'UI/UX ',
+    subtitle: 'FIGMA'
   }
 ]
 
@@ -194,6 +198,16 @@ const timeline = [
 
 const handleZaloClick = () => {
   window.open('https://zalo.me/0369620631', '_blank')
+}
+
+const handleSkillClick = (index) => {
+  const captchaPages = [
+    '/captcha-frontend',
+    '/captcha-backend', 
+    '/captcha-database',
+    '/captcha-security'
+  ]
+  router.push(captchaPages[index])
 }
 
 const getSnowflakeStyle = (i) => {
