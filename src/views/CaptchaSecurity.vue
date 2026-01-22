@@ -15,7 +15,7 @@
         <div class="skill-icon green">
           <Shield :size="36" />
         </div>
-        <h1>Security & Crypto</h1>
+        <h1>UI/UX Designer</h1>
         <p class="subtitle">OAUTH • JWT • ENCRYPTION</p>
       </div>
 

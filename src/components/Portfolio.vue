@@ -169,7 +169,7 @@ const skills = [
   },
   {
     icon: Shield,
-    title: 'UI/UX ',
+    title: 'UI/UX Designer ',
     subtitle: 'FIGMA'
   }
 ]
