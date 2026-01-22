@@ -89,17 +89,27 @@
           class="project-card"
           @click="handleProjectClick(project.link)"
         >
-          <div class="project-badge">AUTOMATION</div>
-          <h3 class="project-title">{{ project.title }}</h3>
-          <p class="project-description">{{ project.description }}</p>
-          <div class="project-tags">
-            <span 
-              v-for="(tag, i) in project.tags" 
-              :key="i"
-              class="project-tag"
-            >
-              {{ tag }}
-            </span>
+          <!-- Project Image Preview -->
+          <div class="project-image-wrapper">
+            <img :src="project.image" :alt="project.title" class="project-image" />
+            <div class="project-overlay">
+              <div class="project-badge">{{ project.category }}</div>
+            </div>
+          </div>
+
+          <!-- Project Content -->
+          <div class="project-content">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            <div class="project-tags">
+              <span 
+                v-for="(tag, i) in project.tags" 
+                :key="i"
+                class="project-tag"
+              >
+                {{ tag }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -169,7 +179,7 @@ const skills = [
   },
   {
     icon: Shield,
-    title: 'UI/UX Designer ',
+    title: 'UI/UX Designer',
     subtitle: 'FIGMA'
   }
 ]
@@ -179,13 +189,17 @@ const projects = [
     title: 'Hệ Thống Bán Acc Tự Động',
     description: 'Tích hợp thanh toán QR Code, quản lý tài khoản, tăng doanh thu lên 300%',
     tags: ['#NODE.JS', '#REACT', '#MONGODB'],
-    link: 'https://shopaccgiaphong-com-vn.pages.dev/'
+    link: 'https://shopaccgiaphong-com-vn.pages.dev/',
+    image: 'src/assets/images/project1.jpg',
+    category: 'AUTOMATION'
   },
   {
     title: 'Nền Tảng Mạng Xã Hội',
     description: 'Xây dựng social media với thời gian thực, chat, notification',
     tags: ['#VUE.JS', '#SOCKET.IO', '#POSTGRESQL'],
-    link: ''
+    link: '',
+    image: 'src/assets/images/project2.jpg',
+    category: 'SOCIAL MEDIA'
   }
 ]
 
@@ -210,6 +224,12 @@ const handleSkillClick = (index) => {
   router.push(captchaPages[index])
 }
 
+const handleProjectClick = (link) => {
+  if (link) {
+    window.open(link, '_blank')
+  }
+}
+
 const getSnowflakeStyle = (i) => {
   return {
     left: `${Math.random() * 100}%`,
@@ -217,12 +237,6 @@ const getSnowflakeStyle = (i) => {
     animationDelay: `${Math.random() * 3}s`,
     fontSize: `${10 + Math.random() * 20}px`,
     opacity: 0.3 + Math.random() * 0.7
-  }
-}
-
-const handleProjectClick = (link) => {
-  if (link) {
-    window.open(link, '_blank')
   }
 }
 </script>
@@ -630,7 +644,7 @@ const handleProjectClick = (link) => {
   backdrop-filter: blur(24px);
   border: 1px solid rgba(234, 179, 8, 0.2);
   border-radius: 1rem;
-  padding: 1.5rem;
+  overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -642,17 +656,53 @@ const handleProjectClick = (link) => {
   box-shadow: 0 15px 40px rgba(251, 191, 36, 0.2);
 }
 
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.1);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
 .project-badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  background: rgba(234, 179, 8, 0.2);
+  background: rgba(234, 179, 8, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(234, 179, 8, 0.5);
   border-radius: 2rem;
   color: #fbbf24;
   font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
 }
 
 .project-title {
@@ -677,7 +727,7 @@ const handleProjectClick = (link) => {
 
 .project-tag {
   padding: 0.25rem 0.75rem;
-  background: rgba(17, 24, 39, 0.5);
+  background: rgba(17, 24, 39, 0.8);
   border: 1px solid rgba(55, 65, 81, 0.5);
   border-radius: 0.5rem;
   font-size: 0.75rem;
@@ -806,5 +856,16 @@ const handleProjectClick = (link) => {
   font-size: 0.75rem;
   color: #6b7280;
   letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .profile-name {
+    font-size: 2rem;
+  }
+  
+  .project-image-wrapper {
+    height: 180px;
+  }
 }
 </style>
