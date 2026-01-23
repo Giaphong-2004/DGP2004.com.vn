@@ -190,7 +190,7 @@ const projects = [
     description: 'Tích hợp thanh toán QR Code, quản lý tài khoản, tăng doanh thu lên 300%',
     tags: ['#NODE.JS', '#REACT', '#MONGODB'],
     link: 'https://shopaccgiaphong-com-vn.pages.dev/',
-    image: 'public/images/project1.jpg',
+    image: '/images/project1.jpg',
     category: 'AUTOMATION'
   },
   {
@@ -198,7 +198,7 @@ const projects = [
     description: 'Xây dựng social media với thời gian thực, chat, notification',
     tags: ['#VUE.JS', '#SOCKET.IO', '#POSTGRESQL'],
     link: '',
-    image: 'public/images/project2.jpg',
+    image: '/images/project2.jpg',
     category: 'SOCIAL MEDIA'
   }
 ]
